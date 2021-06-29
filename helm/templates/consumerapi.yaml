@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: consumerapi
+  name: consumerapi
+  namespace: consumer-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumerapi
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: consumerapi
+    spec:
+      containers:
+      - name: consumerapi
+        image: lt92msj/consumer_api
+        name: consumerapi
+        ports:
+        - containerPort: 8080
+        resources: {}
+      - name: backendapi
+        image: lt92msj/backend_api
+        ports:
+        - containerPort: 8083
+        resources: {}
+status: {}
